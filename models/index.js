@@ -3,21 +3,12 @@ var myViewModel = function (name, lastName) {
     this.firstName = ko.observable('Bert');
     this.lastName = ko.observable("Berlington");
 
-    // function setName(name) {
-    //     if(!name || !lastName){
-    //         throw new Error("Please fill the fields with some values");
-    //     }
-    //
-    // }
-    //
-    // function setlastName(lastName) {
-    //     if(!lastName){
-    //         throw new Error("Please fill the fields with some values");
-    //     }
-    // }
+    this.capitalizeLastName = function () {
+        var currentVal = this.lastName();        // Read the current value
+        this.lastName(currentVal.toUpperCase()); // Write back a modified value
+    };
 
-
-    this.fullName = ko.computed(function() {
+    this.fullName = ko.computed(function () {
         return this.firstName() + " " + this.lastName();
     }, this);
 }
